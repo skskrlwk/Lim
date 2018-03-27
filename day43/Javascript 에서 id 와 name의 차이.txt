@@ -1,0 +1,15 @@
+>>> Javascript 에서 id 와 name의 차이 <<<
+
+id는 특정한 HTML요소를 지칭할 경우 사용되는 것으로 
+JavaScript에서는 getElementById()메서드를 사용하여 접근 가능하며,
+
+name의 경우는 form내의 값을 get방식이나 post방식으로 전송(submit)할 경우 사용되는 속성이다.
+
+좀 실제 개발을 하는 관점에서 봤을 때, 
+id는 보통 Front-End 쪽에서 많이 사용하게 된다.
+Javascript에서 document.getElementById("id")와 같은 식으로 접근한다.
+
+name을 주게 되면 Back-End쪽에서 
+(JSP인 경우 request.getParameter("name"), PHP인 경우 $_GET['name'], $_POST['name'] 등으로 값을 받을 때 ) 많이 활용한다.
+
+id와 name의 값은 서로 달라도 되지만, 일반적으로 같은 이름으로 맞춰서 많이 쓴다.
