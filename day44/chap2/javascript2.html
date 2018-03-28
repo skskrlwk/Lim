@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>chap2. 상품선택시 텍스트박스에 금액 자동입력하기</title>
+<style type="text/css">
+
+	table, td {border: 1px solid gray;
+	           border-collapse: collapse;
+	           padding: 3%; 
+	           }
+	           
+    .productname {font-size: 14pt;
+                  font-weight: bold;
+                 }	
+    
+    .money {color: blue;
+            font-weight: bold;}
+                 
+    #underline {text-decoration: underline;
+                margin-top: 5%;}                        
+
+</style>
+<script type="text/javascript">
+	function myChoice(choice) {
+		
+		var monitorPrice = document.getElementById("monitorPrice").innerHTML;
+		/* document.getElementById("monitorPrice").innerHTML 은
+		   document.getElementById("monitorPrice") 태그의 내용물을 말한다.
+		     즉, 200,000 이다.
+		*/
+		var camPrice = document.getElementById("camPrice").innerHTML;
+		
+		var numMonitorPrice = parseInt(monitorPrice.split(",").join('')) + 5000;
+		
+		var numCamPrice = parseInt(camPrice.split(",").join('')) + 5000;
+		
+		switch(choice) {
+			case "1":
+				document.getElementById("orderMoney").value = monitorPrice; // input 타입은 .value
+				document.getElementById("totalMoney").innerHTML = Number(numMonitorPrice).toLocaleString("en"); // span태그는 .innerHTML
+				break;
+			
+			case "2":
+				document.getElementById("orderMoney").value = camPrice;
+				document.getElementById("totalMoney").innerHTML = Number(numCamPrice).toLocaleString("en");
+				break;
+			
+			default:
+		}
+		
+	}
+	
+
+</script>
+
+</head>
+<body>
+<div align="center">
+	<h2 id="underline">상품선택</h2>
+	<table>
+		<tr align="center" valign="bottom">
+			<td width="200px" height="200px">
+				<img width="150px" height="150px" alt="모니터" src="images/monitor.jpg">
+			</td>
+			<td width="200px">
+				<img width="150px" height="150px" alt="캠코더" src="images/cam.jpg">
+			</td>
+		</tr>
+		<tr align="center">
+			<td>
+			    <span class="productname">LCD모니터</span><br/>
+				<span class="money"><span id="monitorPrice">200,000</span>원</span>
+			</td>
+			<td>
+			    <span class="productname">캠코더</span><br/>
+				<span class="money"><span id="camPrice">700,000</span>원</span>
+			</td>
+		</tr>
+		<tr align="center">
+			<td>
+			    <label for="monitor">[선택]</label>
+				<input type="radio" name="order" id="monitor" value="1" onClick="myChoice('1');" />
+			</td>
+			<td>
+			    <label for="cam">[선택]</label>
+				<input type="radio" name="order" id="cam" value="2" onClick="myChoice('2');" />
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<span style="color: red; font-weight: bold; margin-right: 20px;">[주문금액]</span><input type="text" id="orderMoney" size="10" style="font-size: 14pt; color: maroon; text-align: right;"/>원
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center" style="color: navy; font-weight: bold;">
+				<span style="margin-right: 20px;">[배송비포함 주문금액]</span><span id="totalMoney" style="color: red;"></span>원
+			</td>
+		</tr>
+	</table>
+</div>
+</body>
+</html>

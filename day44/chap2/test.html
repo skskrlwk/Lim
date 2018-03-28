@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>split() 와 join()에 대해서 알아보기.</title>
+<style type="text/css">
+	.btn {width: 100px; height: 50px; margin-right: 5%;
+		  background: #000000;}
+	.title{font-size: 14pt; font-weight: bold; color: white;}
+	#fruit{font-size: 14pt; color: blue;}
+</style>
+<script type="text/javascript">
+	function goArray() {
+		var arr = ["이순신", "유관순", "홍길동", "한석규", "엄정화"];
+		
+		for(var i=0; i<arr.length; i++){
+			
+		//	alert( (i+1)+"."+arr[i] );
+		console.log( (i+1)+"."+arr[i] );
+		}
+	}
+	
+	function goSplit() {
+		var names = "일지매,			이지매,삼지매,	사지매,	오지매	";
+		var arr = names.split(","); // (",") 를 기준으로  배열로 값을 반환시킨다.
+		
+		for(var i=0; i<arr.length; i++) {
+			console.log( arr[i].trim() );
+		}
+		
+	}
+	
+	function goJoin() {
+		var arr = ["이순신", "유관순", "홍길동", "한석규", "엄정화"]; 
+		var str = arr.join("	/	") // 배열안에있는 문자열을 합치면서 ("	/	") 를 붙여준다
+		console.log(str); // 결과값  이순신	/	유관순	/	홍길동	/	한석규	/	엄정화
+	
+	}
+	
+	function goFruitSplit() {
+		var data = document.getElementById("fruit").innerHTML;
+	
+		var arr = data.split(",");
+		var result = "";
+		for(var i=0; i<arr.length; i++) {
+			result += (i+1)+"."+arr[i].trim()+"<br/>";
+		}// end of for ----------------
+		
+		document.getElementById("fruitResult").innerHTML = result;
+	}
+	
+	function goFruitSplitReset() {
+		
+		document.getElementById("fruitResult").innerHTML = "";
+	}
+	
+	function goComma() {
+		var num = document.getElementById("mynum").innerHTML;
+		var money = Number(num).toLocaleString("en"); // num 은 정수로 되어진 문자열이거나 또는 정수 그자체 이어야 한다.	
+		/* 
+			toLocaleString 은 Number 타입의 내장 함수이며,
+			인자로 들어온 지역 값에 따른 숫자 표기 방식을 적요하여, 문자열로 반환하는 역할을 한다.
+			'en' 은 영어권 국가의 숫자 표기 방식을 사용하겠다는 것을 지정한 것이다.
+			미국권이나 영어권 국가에서는 수자를 표기할 때 , 3자리마다 숫자를 끊어 콤마를 삽입하여 사용한다.
+		*/
+		document.getElementById("mymoney").innerHTML = money;
+			
+	}
+	
+	
+</script>
+</head>
+<body>
+	<div style="border: 0px solid red; margin-top: 3%; margin-bottom: 5%; padding-left: 35%;">
+		<button type="button" class="btn" onclick="goArray();"><span class="title">배열</span></button>
+		<button type="button" class="btn" onclick="goSplit();"><span class="title">split</span></button>
+		<button type="button" class="btn" onclick="goJoin();"><span class="title">join</span></button>
+		<button type="button" class="btn" onclick="goFruitSplit();"><span class="title">과일배열</span></button>
+		<button type="button" class="btn" onclick="goFruitSplitReset();"><span class="title">초기화</span></button>
+		<button type="button" class="btn" onclick="goComma();"><span class="title">콤마찍기</span></button>
+	</div>
+	<div style="border: 0px solid red; margin-top: 3%; padding-left: 35%;">
+		<span id="fruit">사과,귤,딸기,토마토,수박,참외</span>
+	</div>
+	<div id="fruitResult" style="border: 0px solid blue; padding-left: 35%; margin-top: 5%; color: red; font-size: 12pt">
+		
+	</div>
+	<div style="margin-top: 5%; padding-left: 35%; font-size: 20pt;">
+		<span id="mynum">123456</span>
+		<p>
+		<span id="mymoney"></span>
+	</div>
+</body>
+</html>
