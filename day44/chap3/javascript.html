@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>chap3. 팝업창 띄우기</title>
+<style type="text/css">
+
+	table, td {border: 1px solid gray;
+	           border-collapse: collapse;
+	           padding: 3%; 
+	           }
+	           
+    .productname {font-size: 14pt;
+                  font-weight: bold;
+                 }	
+    
+    .money {color: blue;
+            font-weight: bold;}
+                 
+    #underline {text-decoration: underline;
+                margin-top: 5%;}          
+    img{width: 70px;
+    	height: 70px;
+    	border: 0px;}                          
+
+
+</style>
+
+<script type="text/javascript">
+	function openWin(imgfile){
+		
+		var win;
+		/* win = window.open("imsi.html","subwinpopup",
+						  "left=200, top=200, width=400, height=350"); // 팝업창 띄우기 */
+						  
+		win = window.open("","subwinpopup",
+		 				  "left=200, top=200, width=400, height=350"); // 팝업창 띄우기 
+		
+		win.document.writeln("<html>");
+		win.document.writeln("<head><title>제품이미지"+imgfile+"확대해보기</title></head>");
+		win.document.writeln("<body align='center'>");
+		win.document.writeln("<img src='"+imgfile+"' />");
+		win.document.writeln("<button type='button' onClick='window.close();' >창 닫기</button><br/><br/><br/>");
+		win.document.writeln("</body>");
+		win.document.writeln("</html>");
+		
+		  
+	}
+</script>
+
+</head>
+<body>
+<div align="center">
+	<h2 id="underline">상품선택</h2>
+	<table>
+		<tr align="center" valign="bottom">
+			<td width="150px" >
+				<img alt="모니터" src="images/monitor.jpg" onclick="openWin('images/monitor.jpg');"/>
+			</td>
+			<td width="150px">
+				<img alt="캠코더" src="images/cam.jpg" onclick="openWin('images/cam.jpg');"/>
+			</td>
+		</tr>
+		<tr align="center">
+			<td>
+			    <span class="productname">LCD모니터</span><br/>
+				<span class="money"><span id="monitorPrice">200,000</span>원</span>
+			</td>
+			<td>
+			    <span class="productname">캠코더</span><br/>
+				<span class="money"><span id="camPrice">700,000</span>원</span>
+			</td>
+		</tr>
+		
+	</table>
+</div>
+</body>
+</html>
