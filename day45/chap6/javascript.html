@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>6. 주소찾기</title>
+<style type="text/css">
+   #underline{text-decoration:underline;}
+   
+   table {border: 1px solid gray;
+    	  border-collapse:collapse; 
+    	  width: 650px; }
+    		  
+   td {border: 1px solid gray;
+       padding: 5px; }
+       
+   td.firstTd {width: 100px; 
+               text-align: center;
+               color: blue;
+               background-color: #d0d0d0;}
+             
+   td.secondTd {padding-left: 15px; } 
+</style>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript">
+
+	function openDaumPostnum() {
+		new daum.Postcode({
+			oncomplete: function(data) {
+			document.getElementById("postnum1").value = data.postcode1; // 우편번호의 첫번째 값    예> 151
+			document.getElementById("postnum2").value = data.postcode2; // 우편번호의 두번쨰 값    예> 019
+			document.getElementById("addr1").value = data.address; 	  // 큰주소		        예> 서울특별시 종로구 인사로 17
+			document.getElementById("addr2").focus();
+			}
+		}).open();
+	
+	}
+</script>
+</head>
+<body>
+	<div align="center">
+	<h2 id="underline">상품 주문</h2>
+	<form name="frmData" method="post" action="write.jsp">
+		<table>
+		<tr>
+			<td class="firstTd">상품명</td>
+			<td class="secondTd"><input type="text" name="prodname" size="20"></td>
+		</tr>
+		<tr>
+			<td class="firstTd">고객명</td>
+			<td class="secondTd"><input type="text" name="custname" size="20"></td>
+		</tr>
+		<tr>
+			<td class="firstTd">우편번호</td>
+			<td class="secondTd"><input type="text" id="postnum1" name="postnum1" size="10">&nbsp;-&nbsp;<input type="text" id="postnum2" name="postnum2" size="10">
+			<input type="button" value="우편번호찾기" onClick="openDaumPostnum();">&nbsp;
+		</td>
+		</tr>
+		<tr>
+			<td class="firstTd">주 소</td>
+			<td class="secondTd"><input type="text" id="addr1" name="addr1" size="50">&nbsp;
+		</td>
+		</tr>
+		<tr>
+			<td class="firstTd">상세주소</td>
+			<td class="secondTd"><input type="text" id="addr2" name="addr2" size="50">&nbsp;
+		</td>
+		</tr>
+		<tr>
+			<td class="firstTd">전화번호</td>
+			<td class="secondTd"><input type="text" name="phone" size="15"></td>
+		</tr>
+		<tr align="center">
+			<td colspan="2">
+			<input type="submit" value="주문">&nbsp;
+			<input type="reset" value="취소">&nbsp;
+			</td>
+		</tr>
+		</table>
+	</form>
+	</div>
+</body>
+</html>

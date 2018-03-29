@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>계산서</title>
+
+<style type="text/css">
+	#underline{text-decoration: underline;
+			margin-top: 2%;
+			margin-bottom: 2%;}
+	
+	table ,td{border: 1px solid gray;
+				border-collapse: collapse; /* 셀간격을 없앤다. */
+				padding: 5px;
+	}
+	
+	td.title {background-color: ivory;
+				font-weight: bold;
+				text-align: right;
+				color: #ff6600; } /*td태그에 있는 title */
+				
+	span#allChoice {font-size: 8pt; 
+					font-weight: normal;
+					font-style: italic; 
+					color: blue;}
+	.cnt {text-align: right;}				
+</style>
+
+<script type="text/javascript">
+
+	function fun_check(obj){
+		
+		var id = obj.id; // foodName0 		foodName1 		foodName2 ...		foodName5
+						 // foodOrdercnt0 	foodOrdercnt1	foodOrdercnt2.....	foodOrdercnt5  
+		var commonIdName = id.substring(0, id.length-1);
+		//console.log(commonIdName); // foodName or foodOrdercnt
+		
+		// 식사 또는 음료의 체크박스 클릭한 경우 commonIdName 이 "foodName"
+		if(commonIdName == "foodName"){//자바 스크립트는 문자열 비교를 ==로 한다.
+			var arr=document.getElementsByName("foodName");
+			var num ="";	
+		
+			for(var i=0; i<arr.length; i++){
+				// 클릭한 체크박스가 무엇인지 알아보도록 하자
+				if(arr[i] == obj){
+					num = arr[i].id.substring(8);
+					// 만약에 체크박스 id가 "foodName1" 이라면  arr[i].id.substring(8)은 "1"을 말한다.
+					break;
+				}
+			}// end of for-------------------------
+			
+			// console.log(num); 
+			if(obj.checked){
+				// 체크박스 클릭한 경우인데 체크를 한 경우
+				
+				document.getElementById("foodOrdercnt"+num).value =1; 
+				// 주문량을 1로 설정한다.
+			} else{
+				// 체크박스 클릭한 경우인데 체크를 해제한 경우
+				document.getElementById("foodOrdercnt"+num).value =0; 
+				// 주문량을 0로 설정한다.
+				
+			}
+		// 주문량을 클릭한 경우commonIdName 이 "foodOrdercnt"
+		} else if(commonIdName == "foodOrdercnt"){
+			
+			var arr = document.getElementsByName("foodOrdercnt");
+			var num = "";
+			
+			for(var i=0; i<arr.length;i++){
+				
+				if(arr[i] == obj){
+					num = arr[i].id.substring(12);
+					// 만약에 number 태그 id가 "foodOrdercnt1"이라면 
+					// arr[i].id.substring(12)은 "1"을 말한다.
+					if(arr[i].value != "0"){
+						// 주문량이ㅣ 0이아니라면 체크박스에 체크를 한다.
+						document.getElementById("foodName"+num).checked = true;
+					} else{
+						//  주문량이ㅣ 0이라면 체크박스에 체크를 해제한다.
+						document.getElementById("foodName"+num).checked = false;
+					}
+					break;
+				}// end of if----------------------------
+				
+			}// end of for-------------------------------
+			
+		}// end of if ~ else
+		
+		calcSum(); // 청구금액 구하는 함수 호출.
+		
+	}// end of function fun_check(obj)--------------------
+	
+	
+	function calcSum() {
+		
+		var sum = 0;
+		var arr = document.getElementsByName("foodOrdercnt");
+		
+		for(var i=0; i<arr.length; i++){
+			
+			var orderCnt = parseInt(arr[i].value); // 주문량
+			var danga = parseInt(document.getElementById("danga"+i).value); // 단가
+			sum += orderCnt*danga;
+		}
+		
+		document.getElementById("totalMoney").value = Number(sum).toLocaleString('en');
+		
+		
+	}// end of function calcSum()---------------------------------------
+</script>
+
+</head>
+<body>
+<div align="center">
+	<h2 id="underline">계산서</h2>
+	<table>
+		<tr>
+			<td class="title">식사류</td>
+			<td>
+				<input type="checkbox" name="foodName" id="foodName0" value="짜장면" onClick="fun_check(this);" /><label for="foodName0">짜장면(4,000)</label>&nbsp;
+				<input type="hidden" id="danga0" value="4000" >
+				<input type="number" class="cnt" name="foodOrdercnt" id="foodOrdercnt0" min="0" max="99" value="0" step="1" onClick="fun_check(this);" /> <!-- value=0은 처음에 0을 보여주겠다 step은 1씩 증가 -->
+				
+				
+				<input type="checkbox" name="foodName" id="foodName1" value="짬뽕" onClick="fun_check(this);" /><label for="foodName1">짬뽕(5,000)</label>&nbsp;
+				<input type="hidden" id="danga1" value="5000" >
+				<input type="number" class="cnt" name="foodOrdercnt" id="foodOrdercnt1" min="0" max="99" value="0" step="1" onClick="fun_check(this);" />
+				
+				
+				<input type="checkbox" name="foodName" id="foodName2" value="볶음밥" onClick="fun_check(this);" /><label for="foodName2">볶음밥(6,000)</label>&nbsp;
+				<input type="hidden" id="danga2" value="6000" >
+				<input type="number" class="cnt" name="foodOrdercnt" id="foodOrdercnt2" min="0" max="99" value="0" step="1" onClick="fun_check(this);" />
+			</td>
+		</tr>
+		<tr>
+			<td class="title">음료</td>
+			<td>
+				<input type="checkbox" name="foodName" id="foodName3" value="사이다" onClick="fun_check(this);"/><label for="foodName3">사이다(1,000)</label>&nbsp;
+				<input type="hidden" id="danga3" value="1000" >
+				<input type="number" class="cnt" name="foodOrdercnt" id="foodOrdercnt3" min="0" max="99" value="0" step="1" onClick="fun_check(this);" />
+				
+				<input type="checkbox" name="foodName" id="foodName4" value="콜라" onClick="fun_check(this);"/><label for="foodName4">콜라(1,000)</label>&nbsp;
+				<input type="hidden" id="danga4" value="1000" >
+				<input type="number" class="cnt" name="foodOrdercnt" id="foodOrdercnt4" min="0" max="99" value="0" step="1" onClick="fun_check(this);" />
+				
+				<input type="checkbox" name="foodName" id="foodName5" value="커피" onClick="fun_check(this);"/><label for="foodName5">커피(2,000)</label>&nbsp;
+				<input type="hidden" id="danga5" value="2000" >
+				<input type="number" class="cnt" name="foodOrdercnt" id="foodOrdercnt5" min="0" max="99" value="0" step="1" onClick="fun_check(this);" />
+			</td>
+		</tr>
+		<tr align="center">
+			<td class="title">청구금액</td>
+			<td>
+				<input type="text" value="0" id="totalMoney" size="15" style="border-style: hidden; color: magenta"/> 원
+			</td>
+		</tr>
+		<tr align="center">
+			<td colspan="2">
+				<button type="button">주문</button>&nbsp;&nbsp;
+				<button type="reset">취소</button>
+			</td>
+			
+		</tr>
+	</table>
+</div>
+</body>
+</html>
