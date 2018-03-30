@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>1-2. 어느 버튼을 더블클릭했는지 확인하기(bind)</title>
+<!-- 웹페이지에 버튼이 여러개 있고 각각의 버튼은 서로 다른일을 한다.
+버튼에 대한 이벤트를 올바르게 처리하려면 어떤 버튼을 클릭했는지 알아야한다. -->
+
+<link rel="stylesheet" type="text/css" href="/JqueryStudy/eventHandling/css/event.css"> <!-- 외부에 만든 css를 끌어온다. -->
+
+<script type="text/javascript" src="/JqueryStudy/js/jquery-2.0.0.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		
+		var text ="";
+		
+		$(".bold").dblclick( function(){ // 더블클릭
+			
+		//	text = $(".bold").text(); // 선택자(selector)가 bold 라는 클래스를 가지는 태그의내용물의 글자를 가져오는 것이다.
+			text = $(this).text(); // $(this)는 이벤트가 발생된 선택자를 말한다.
+			alert(text +" 버튼을 더블 클릭하셨네요");
+			
+		});
+		
+		$(".italic").dblclick( function(){
+			
+		//	text = $(".italic").text();
+			text = $(this).text();
+			alert(text +" 버튼을 더블클릭하셨네요");
+		});
+	});
+</script>
+</head>
+<body>
+	<div style="margin-top: 5%;">
+		<span class="buttons bold">굵게</span><!--  buttons 와 bold는 합집합 -->
+		<span class="buttons italic">기울임꼴</span>
+	</div>
+</body>
+</html>

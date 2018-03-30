@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>3-2. 마우스 이벤트 처리하기 (event.target 속성)</title>
+<link rel="stylesheet" type="text/css" href="/JqueryStudy/eventHandling/css/event.css"> <!-- 외부에 만든 css를 끌어온다. -->
+
+<style type="text/css">
+
+.cnt {font-weight: bold;
+	  color : #ff0000;
+	  font-size: 17pt;
+	  text-decoration: underline; }		
+</style>
+
+<script type="text/javascript" src="/JqueryStudy/js/jquery-2.0.0.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		
+		var cntBold = 0;
+		var cntItalic = 0;
+		
+		$(".btn").click(function(){
+			var $target = $(event.target); // event 는 btn 에 클릭한 것임.
+										   // $(event.target); 은 event 가 발생되어진 엘리먼트(태그)를 찾아준다.
+			if($target.is(".bold")){ // !!! =중요 !!!	
+									 // 변수.is("#아이디") ==> 변수가 #아이디랑 같은지 비교
+				cntBold++;
+				$("#idbold").html(cntBold);
+									 
+			}else if($target.is(".italic")){
+				cntItalic++;
+				$("#iditalic").html(cntItalic);
+			} 						   
+										   
+		});
+		
+		$(".reset").bind("mousedown", function(){
+			cntBold = 0;
+			cntItalic = 0;
+			$(".cnt").text("");
+		});
+		
+		
+	});
+</script>
+</head>
+
+<body>
+	<div style="margin-top: 5%;">
+		<span class="buttons btn bold">굵게</span><!--  buttons 와 bold는 합집합 -->
+		<span class="buttons btn italic">기울임꼴</span>
+		<span class="buttons reset">초기화</span>
+	</div>
+	<div style="margin-top: 5%; font-size: 16pt; padding-left: 20px"  >
+		굵게:<span id="idbold" class="cnt"></span> 번클릭	 / 기울임꼴:<span id="iditalic" class="cnt"></span>번클릭
+		
+	</div>
+
+
+</body>
+</html>

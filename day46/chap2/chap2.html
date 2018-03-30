@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>2. 버튼을 한번 클릭하여 이벤트발생한 이후 이벤트 비활성화 시키기</title>
+<!-- 예를 들어 회원가입시 "회원가입"이라는 버튼이 있을 경우
+	 정상적으로 회원가입이 성공되었다라면  다음번에는 "회원가입" 버튼이 클릭이 안되어지도록 하고자 한다. -->
+
+<link rel="stylesheet" type="text/css" href="/JqueryStudy/eventHandling/css/event.css"> <!-- 외부에 만든 css를 끌어온다. -->
+
+<script type="text/javascript" src="/JqueryStudy/js/jquery-2.0.0.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		
+		var text ="";
+		
+		$(".bold").bind("click", function(){// "click"은 이벤트라고 하고 function(){} 를 핸들링(처리) 함수라고 한다. 이벤트 결합을 한다.
+			
+			text = $(this).text(); 
+			alert(text +" 버튼을 클릭하셨네요"); // click 이벤트에대해서 이벤트 헨들러 생성
+			
+			$(this).unbind("click") //click 이벤트에 대해서 이벤트 헨들러 제거 
+			
+		});
+		
+		$(".italic").bind("click", function(){
+			
+		//	text = $(".italic").text();
+			text = $(this).text();
+			alert(text +" 버튼을 클릭하셨네요");
+		});
+		
+		$(".jja").bind("click", function(){
+			
+			//	text = $(".italic").text();
+				text = $(this).text();
+				alert(text +" 버튼을 클릭하셨네요");
+				$(this).unbind("click");
+				$(".jjam").unbind("click");
+			});
+		
+		$(".jjam").bind("click", function(){
+			
+			//	text = $(".italic").text();
+				text = $(this).text();
+				alert(text +" 버튼을 클릭하셨네요");
+				$(this).unbind("click");
+				$(".jja").unbind("click");
+			});
+		
+	});
+</script>
+</head>
+<body>
+	<div style="margin-top: 5%;">
+		<span class="buttons bold">굵게</span><!--  buttons 와 bold는 합집합 -->
+		<span class="buttons italic">기울임꼴</span>
+	</div>
+	<div style="margin-top: 5%;">
+		<span class="buttons jja">짜장면 선택</span><!--  buttons 와 bold는 합집합 -->
+		<span class="buttons jjam">짬뽕선택</span>
+	</div>
+</body>
+</html>
