@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+#container { width: 95%;
+			 margin: 0 auto;
+			 border: 0px solid red;
+			 background-color: #f0f0f0;
+			 /* height: 500px; */
+			 /*
+			 max-height: 800px;
+			 overflow-y: auto;  y축 설정값을 넘을시 스크롤바 생성 
+			 */ 
+			 
+			 min-height: 900px; }
+
+#header {border : 0px solid blue;
+		 width: 100%;
+		 height: 80px;
+		 margin-top: 30px;
+		 background-color: #908886; }
+
+#content{border : 0px solid green;
+		 width: 75%;
+		 float: left;
+		 min-height: 700px;
+		 background-color: #f5f5f5;}
+
+#sideInfo{border: 0px solid yellow;
+		  width: 24%;
+		  min-height: 700px;
+		  float: rigth;
+		  background-color: #dcdad9;}			  
+
+#footer{border: 0px solid orange;
+		width: 100%;
+		height: 120px;
+		clear: both;
+		background-color: #555555;}		
+		
+		
+#tblMenu{border: 0px solid red;
+		 border-collapse: collapse;
+		 position: relative;
+		 top: 55%;
+		 left: 30%; }
+		 
+#tblContent{border: 0px solid red;
+			position: absolute;
+			left: 25%;
+			top: 25%;}	
+			
+					 
+#tblContent2{border: 0px solid red;
+			 position: absolute;
+			 left: 25%;];
+			 top: 48%; }		
+ 
+.tdImg{padding-left: 50px;}
+
+.tdImg22{padding-left: 50px;}
+		 
+.tdMenu{border: 0px solid red;
+		padding: 0px 30px;
+		font-size: 14pt;
+		font-weight: bold;
+		color: #ffffcc;}
+
+.toFont{font-size: 18pt;
+		color: #ffff80;}		
+				 		
+		
+
+			 

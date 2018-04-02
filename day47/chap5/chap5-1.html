@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>5-1 css() 메소드를 사용하여 동적으로 css 값 변경하기</title>
+<!-- 웹페이지에 버튼과 텍스트가 있고 마우스를 버튼 위로 올리면
+	  텍스트의 배경과 글자색을 변경하여 텍스트를 하이라이트 하고 싶다. -->
+	  
+<link rel="stylesheet" type="text/css" href="/JqueryStudy/eventHandling/css/event.css">	  
+
+<style type="text/css">
+
+	#container{border: 0px solid blue;
+			   width: 90%;
+			   height: 500px;
+			   margin: 10px auto 0px auto;}
+			   
+	#left_div{border: 0px solid red;
+			  width: 30%;
+			  float: left; }
+			  	
+			  	
+	#right_div{border: 0px solid green;
+			   width: 68%;
+			   float: right; }
+			   
+			    
+</style>
+
+<script type="text/javascript" src="/JqueryStudy/js/jquery-2.0.0.js"></script>
+
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		
+		$(".buttons").mouseover(function(){
+			$("#left_div p").css({'background-color':'cyan',
+								  'font-weight':'bold',
+								  'font-size':'16pt',
+								  'color':'blue'});
+			
+			$("#right_div p").css({'background-color':'yellow',
+								   'font-weight':'bold',
+								   'font-size':'16pt',
+								   'color':'red',
+								   'font-family':'궁서체'});
+		});
+		
+		$(".buttons").mouseout(function(){
+			$("#left_div p").css({'background-color':'white',
+								  'font-weight':'nomal',
+								  'font-size':'12pt',
+								  'color':'black'});
+
+			$("#right_div p").css({'background-color':'white',
+								   'font-weight':'nomal',
+								   'font-size':'12pt',
+								   'color':'black',
+								   'font-family':'나눔글꼴'});
+		});
+		
+	});
+	
+</script>
+</head>
+<body>
+	<div style="border: 0px solid red;
+			    margin-top: 30px;
+			    height: 50px;
+			    padding: 10px 0px 0px 70px; ">
+		<span class="buttons">하이라이트</span>
+	</div>
+	
+	<div id="container">
+		<div id="left_div">
+			애국가 1절 
+			<p>
+			동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세
+			무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세.
+			</p>
+		</div>
+		
+		<div id="right_div">
+			애국가 2절
+			<p>
+			남산위에 저소나무 철갑을 두른듯 바람서리 불변함은 우리기상일세
+			무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세.
+			</p>
+		</div>
+	</div>
+
+</body>
+</html>

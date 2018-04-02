@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>4-1. 연예인 사진 보이기 감추기(click, setImg(imgFile) )</title>
+
+<style type="text/css">
+	
+	#container {border: 0px solid blue;	
+	            width: 80%;
+	            margin: 0 auto; /* 시계방향(상->우->하->좌) */
+	            }
+	            
+	#firstdiv {border: 0px solid red;
+	           width: 80%;
+	           margin: 3% auto;
+	           padding-left: 25%; } 
+	           
+	#seconddiv {margin-top: 10%;}           
+	           
+	.btnName {border: 2px solid orange;	
+		      margin-right: 40px;
+		      padding: 10px 30px;
+		      font-size: 16pt;
+		      font-weight: bold;}              
+	
+</style>
+
+<script type="text/javascript" src="/JqueryStudy/js/jquery-2.0.0.js"></script>
+
+<script type="text/javascript">
+	
+	$(document).ready(function(){ 
+		
+		$("#seconddiv").hide();
+		
+		$(".picture1").click(function(){
+			$("#seconddiv").html(setImg("kimth.jpg"));
+			$("#seconddiv").show();
+		});
+		
+		$(".picture2").click(function(){
+			$("#seconddiv").html(setImg("iyou.jpg"));
+			$("#seconddiv").show();
+		});
+		
+		$(".picture3").click(function(){
+			$("#seconddiv").html(setImg("parkby.jpg"));
+			$("#seconddiv").show();
+		});
+		
+		$(".nopicture").click(function(){
+			$("#seconddiv").hide();
+		});
+		
+	});
+	
+	function setImg(imgfile) {
+		
+		var result = "<img src='images/"+imgfile+"' />";
+		
+		return result;
+	}// end of setImg(imgfile)----------------------
+	
+</script>	
+
+</head>
+<body>
+	<div id="container">
+		<div id="firstdiv">
+			<span class="btnName picture1">김태희</span>
+			<span class="btnName picture2">아이유</span>
+			<span class="btnName picture3">박보영</span>
+			<span class="btnName nopicture">지우기</span>
+		</div>
+		<div id="seconddiv"></div>
+	</div>
+</body>
+</html>

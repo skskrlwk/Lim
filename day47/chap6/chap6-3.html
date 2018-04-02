@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>6-3. DIV 를 사용한 구역 나누기  / 연예인 사진 교체하기 </title>
+
+<link rel="stylesheet" type="text/css" href="/JqueryStudy/eventHandling/css/divtest.css"/>
+
+
+<style type="text/css">
+	
+	
+</style>
+
+<script type="text/javascript" src="/JqueryStudy/js/jquery-2.0.0.js"></script>
+
+<script type="text/javascript">
+	
+	$(document).ready(function(){ 
+		
+		$(".tdImg").css('opacity', 0.2);
+		$(".tdImg2").css('opacity', 0.2);
+	
+		$(".tdMenu").mouseover(function(){
+			
+			var $target = $(event.target);
+			
+			if($target.is(".tdMenu1")) {
+				$(this).addClass("toFont");
+				$(".tdImg1").css('opacity', 1.0);
+				$(".tdImg2").html(setImg("iyou.jpg"));
+				$(".tdImg3").html(setImg("parkby.jpg"));
+				
+				$(".tdImg4").html(setImg("kimthLarge.jpg"));
+				$(".tdImg22").css('opacity', 0.2);
+				$(".tdImg4").css('opacity', 1.0);
+				$(".tdImg5").html(setImg("iyou.jpg"));
+				$(".tdImg6").html(setImg("parkby.jpg"));
+				
+			}else if($target.is(".tdMenu2")){
+				$(this).addClass("toFont");
+				$(".tdImg2").css('opacity', 1.0);
+				
+				$(".tdImg5").html(setImg("iyouLarge.jpg"));
+				$(".tdImg22").css('opacity', 0.2);
+				$(".tdImg5").css('opacity', 1.0);
+				$(".tdImg4").html(setImg("kimth.jpg"));
+				$(".tdImg6").html(setImg("parkby.jpg"));
+				
+			}else if($target.is(".tdMenu3")){
+				$(this).addClass("toFont");
+				$(".tdImg3").css('opacity', 1.0);
+				
+				$(".tdImg6").html(setImg("parkbyLarge.jpg"));
+				$(".tdImg22").css('opacity', 0.2);
+				$(".tdImg6").css('opacity', 1.0);
+				$(".tdImg4").html(setImg("kimth.jpg"));
+				$(".tdImg5").html(setImg("iyou.jpg"));
+			}
+			
+			
+			
+			
+		});
+		
+		$(".tdMenu").mouseout(function(){
+			$(this).removeClass("toFont");
+			$(".tdImg").css('opacity', 0.2);
+			
+		});	
+		
+		$(".tdImg").click(function(){
+			
+			$target = $(event.target);
+			if($target.is(".tdImg1 img")){
+				$(".tdImg1").html(setImg("kimthLarge.jpg"));
+				$(".tdImg").css('opacity', 0.2);
+				$(".tdImg1").css('opacity', 1.0);
+				$(".tdImg2").html(setImg("iyou.jpg"));
+				$(".tdImg3").html(setImg("parkby.jpg"));
+
+			}else if($target.is(".tdImg2 img")){
+				$(".tdImg2").html(setImg("iyouLarge.jpg"));
+				$(".tdImg").css('opacity', 0.2);
+				$(".tdImg2").css('opacity', 1.0);
+				$(".tdImg1").html(setImg("kimth.jpg"));
+				$(".tdImg3").html(setImg("parkby.jpg"));
+				
+			}else if($target.is(".tdImg3 img")){
+				$(".tdImg3").html(setImg("parkbyLarge.jpg"));
+				$(".tdImg").css('opacity', 0.2);
+				$(".tdImg3").css('opacity', 1.0);
+				$(".tdImg1").html(setImg("kimth.jpg"));
+				$(".tdImg2").html(setImg("iyou.jpg"));
+			}
+			
+			
+		});
+		
+		 $("#tblMenu").mouseout(function(){
+			$(this).removeClass("toFont");
+			$(".tdImg").css('opacity', 0.2);
+			$(".tdImg22").css('opacity', 0.2);
+			
+			$(".tdImg4").html(setImg("kimth.jpg"));
+			$(".tdImg5").html(setImg("iyou.jpg"));
+			$(".tdImg6").html(setImg("parkby.jpg"));
+			
+		}); 
+	
+	});
+	
+	function func_text() {
+		var result = "";
+		
+		for(var i=0; i<1000; i++) {
+			result += (i+1)+"안녕하세요?.<br/>"	
+		}// end of for--------------------
+		
+		return result;
+		
+	}
+	
+	function setImg(imgfile){
+		var result = "<img src='images/"+imgfile+"' />";
+		return result;
+	}
+	
+</script>	
+
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<table id="tblMenu">
+				<tr>
+					<td class="tdMenu tdMenu1">김태희</td>
+					<td class="tdMenu tdMenu2">아이유</td>
+					<td class="tdMenu tdMenu3">박보영</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div id="content">
+			<table id="tblContent">
+				<tr>
+					<td class="tdImg tdImg1"><img src="images/kimth.jpg" alt="김태희"></td>
+					<td class="tdImg tdImg2"><img src="images/iyou.jpg" alt="아이유"></td>
+					<td class="tdImg tdImg3"><img src="images/parkby.jpg" alt="박보영"></td>
+				</tr>
+			</table>
+			<table id="tblContent2">
+				<tr>
+					<td class="tdImg22 tdImg4"><img src="images/kimth.jpg" alt="김태희"></td>
+					<td class="tdImg22 tdImg5"><img src="images/iyou.jpg" alt="아이유"></td>
+					<td class="tdImg22 tdImg6"><img src="images/parkby.jpg" alt="박보영"></td>
+				</tr>
+			</table>
+		</div>
+		
+		<div id="sideInfo">
+		
+		</div>
+		
+		<div id="footer">
+		</div>
+	</div>
+</body>
+</html>

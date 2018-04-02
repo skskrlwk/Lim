@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>7-1. toggleClass() 에 대해서 알아본다.</title>
+
+<!-- 선택자.toggleClass("클래스명1");
+	 ==> 이 메소드는 선택한 엘리먼트에 클래스명1 이 이미 적용되어 있으면 
+	 	  선택한 엘리먼트에 클래스명1 제가하고, 선택한 엘리먼트에 클래스명1 이
+	 	  적용되어 있지 않으면 클래스명1을  추가시켜주는 것이다.
+ -->
+ 
+<link rel="stylesheet" type="text/css" href="/JqueryStudy/eventHandling/css/event.css" />
+
+<script type="text/javascript" src="/JqueryStudy/js/jquery-2.0.0.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$(".buttons").click(function() {
+			var $target = $(event.target);	
+			
+			if($target.is(".me")){
+				$target.toggleClass("bold");
+				
+			}else if($target.is(".your")) {
+				$target.toggleClass("italic");
+				
+			}
+			
+			
+		});
+		
+		
+	});
+	
+</script>
+</head>
+<body>
+	<span class="buttons me">굵게</span>
+	<span class="buttons your">기울임꼴</span>
+</body>
+</html>

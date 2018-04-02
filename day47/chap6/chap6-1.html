@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>6-1 마우스를 움직여 이미지를 밝게 또는 흐리게 처리하기( css('opacity', '0.2') ).</title>
+<!-- 웹페이지에 이미지버튼이 있다. 처음에는 이미지가 흐린데 마우스를 버튼 위로 움직이면
+	   밝아지고 마우스가 버튼 밖으로 나가면 다시 흐려지게 하고 싶다. -->
+	   
+<link rel="stylesheet" type="text/css" href="/JqueryStudy/eventHandling/css/event.css">	  
+
+<style type="text/css">
+
+</style>	   
+<script type="text/javascript" src="/JqueryStudy/js/jquery-2.0.0.js"></script>
+
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		
+		$("img").css('opacity', 0.4);
+		// opacity CSS 속성값 0(투명, 희미함) ~ 1.0(불투명, 원래색깔);
+		
+		$(".buttons").hover(function(){ // mouseover에 해당
+								$("img").css('opacity', 1.0);
+							},
+							function(){ // mouseout에 해당
+								$("img").css('opacity', 0.4);
+								
+							}
+		);
+		
+	});
+	
+</script>
+</head>
+<body>
+	<span class="buttons">이미지 밝게</span>
+	<img src="images/fish.jpg" alt="물고기" />
+
+</body>
+</html>
