@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+#container{border: 0px solid red;
+		   width: 90%;
+		   min-height: 600px;
+		   margin: 0 auto;}
+
+#menu {border: 0px solid blue;
+	   width: 90%;
+	   height: 150px;
+	   margin: 5% 10% 0% 5%;}
+	   
+#tblMenu{margin: 2% auto;}
+
+
+.buttons {border: 0px solid yellow;
+		  background-color: black;
+		  color:white;
+		  font-size: 18pt;}	   		   

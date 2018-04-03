@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>display 를 li 에 적용하여 가로메뉴를 만들어본다.</title>
+<style type="text/css">
+	ul {list-style-type: none; /* 리스트의 디스크 아이콘 제거*/
+	    }
+	
+	li {display: inline; /* 리스트를 가로로 표시한다.*/
+        } 
+          
+	a {text-decoration: none;
+	   color: white;
+	   background-color: blue;
+	   display: inline-block;
+	   /* a태그는 display가 inline 이므로 width 와 height를 부여할 수 없다.
+	      width와 height를 부여하려면 diplay를 block 으로 변경해야 한다.
+	             그런데 display를 block 으로 변경하면 앞.뒤로 줄바꿈이 발생하므로 
+	             줄바꿈이 발생되지 않은채 width와 height를 부여하려고
+	      display: inline-block; 으로 준다. */
+	   width: 130px;
+	   height: 30px;
+	   font-size: 14pt;
+	   text-align: center;
+	   padding-top: 5px;
+	   padding-bottom: 5px;
+	   padding-right: 5px;
+	   margin-right: 30px;
+	   }   
+	
+	a:hover {color: red;
+			 background-color: cyan;
+			 text-decoration: none; /* 밑줄제거 */}   
+	 
+	#container{width: 80%;
+			   margin: 0 auto;}
+	
+	#menu{margin-top: 2%;
+		  text-align: center;}		 
+	
+</style>
+	
+</head>
+<body>
+	<div id="container">
+		<div id="menu">
+			<ul>
+				<li><a href="#">영화</a></li>
+				<li><a href="#">예매</a></li>
+				<li><a href="#">극장</a></li>
+				<li><a href="#">이벤터&amp;컬쳐</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="container">
+		여기는 내용물이 들어오는 곳입니다.
+	</div>
+</body>
+</html>

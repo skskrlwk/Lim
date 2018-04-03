@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS의 display에 대해서 알아본다.</title>
+
+<style type="text/css">
+	.myweb {display: block;}
+	.myli {display: inline;}
+	.myinLineblock{display: inline-block;}
+	
+	.biverage {display: inline-block;}
+	
+	div{margin: 2%;}
+	
+</style>
+
+</head>
+<body>
+	
+	<div>
+		<ul style="list-style: square;"> <!-- disc; circle; square; -->
+			<li>라면</li>
+			<li>떡볶이</li>
+			<li>김밥</li>
+		</ul>
+		<p>
+		<ol style="list-style: decimal;">
+			<li>라면</li>
+			<li>떡볶이</li>
+			<li>김밥</li>
+		</ol>
+		<p>
+		<ol style="list-style: decimal-leading-zero;"> 
+			<li>라면</li>
+			<li>떡볶이</li>
+			<li>김밥</li>
+		</ol>
+		<ol style="list-style: upper-roman;"> 
+			<li>라면</li>
+			<li>떡볶이</li>
+			<li>김밥</li>
+		</ol>
+	</div>
+	
+	<div>
+		<ul style="list-style: none;">
+			<li>라면</li>
+			<li>떡볶이</li>
+			<li>김밥</li>
+		</ul>
+	</div>
+	
+	<div>
+		<ul style="list-style: none;">
+			<li class="biverage">
+				탄산음료
+				<ol>
+					<li>콜라</li>
+					<li>사이다</li>
+					<li>환타</li>
+				</ol>
+			</li>
+			
+			<li class="biverage">
+				과일음료
+				<ol>
+					<li>사과쥬스</li>
+					<li>배쥬스</li>
+					<li>포도쥬스</li>
+				</ol>
+			</li >
+			
+			<li class="biverage">
+				이온음료
+				<ol>
+					<li>포카리스웨트</li>
+					<li>7세븐업</li>
+					<li>파워에이드</li>
+				</ol>
+			</li>	
+		</ul>
+	</div>
+	
+	
+	
+</body>
+</html>

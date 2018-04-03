@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>8-1. 이벤트 처리로 텍스트 추가[prepend(), append() 메소드] 또는 텍스트 제거[detach(), empty(), remove()메소드]</title>
+<!-- 웹페이지에 '추가' 와 '제거' 라는 텍스트를 가진 버튼이 있는데, '추가' 버튼을 누르면 특정 텍스트가 웹페이즈에 추가되고,
+	 '제거' 버튼을 누르면 추가된 텍스트를 웹페이지에서 제가하고 싶다.   -->
+
+<link rel="stylesheet" type="text/css" href="/JqueryStudy/eventHandling/css/chap8.css" />
+
+<script type="text/javascript" src="/JqueryStudy/js/jquery-2.0.0.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$(".btn1").click(function(){
+			$(".div1").prepend("<p>동해물과 백두산이 마르고 닳도록 하느님이 보우하사 <span style=\"color:blue;\">우리나라 </span>만세<br/>무궁화 삼천리 화려강산 대한사람 대한으로 기리 보전하세</p>"); // 선택자 앞에
+		    $(".div1").append("<p>동해물과 백두산이 마르고 닳도록 하느님이 보우하사 <span style=\"color:red;\">우리나라 </span>만세<br/>무궁화 삼천리 화려강산 대한사람 대한으로 기리 보전하세</p>"); // 선택자 뒤에
+		    
+		    $(".div2").prepend("<p>남산위에 저소나무 철갑을 두른듯 바람서리 불변함은 <span style=\"color:blue;\">우리기상 </span>일세<br/>무궁화 삼천리 화려강산 대한사람 대한으로 기리 보전하세</p>"); // 선택자 앞에
+		    $(".div2").append("<p>남산위에 저소나무 철갑을 두른듯 바람서리 불변함은 <span style=\"color:red;\">우리기상 </span>일세<br/>무궁화 삼천리 화려강산 대한사람 대한으로 기리 보전하세</p>"); // 선택자 뒤에
+		    
+		});
+		
+		$(".btn2").click(function(){
+			$(".div1").empty(); //	선택자$(".div1") 하위요소(자식요소)를 제거한다.
+			$(".div2").empty();
+			
+		});
+	
+		$(".btn3").click(function(){
+		
+			$(".div1").remove(); // 선택자 $(".div1") 의 자기자신 및 하위요소를 제거한다.
+			$(".div2").remove();
+			
+		});
+		
+	});
+	
+</script>
+
+</head>
+<body>
+	<div id="container">
+		<div id="menu">
+			<table id="tblMenu">
+				<tr>
+					<td class="buttons btn1">추가</td>
+					<td class="buttons btn2">empty</td>
+					<td class="buttons btn3">remove</td>
+				</tr>
+			</table>
+		</div>
+		<div class="content div1">
+			<span style="color: blue; font-weight: bold;">애국가 1절</span>
+		</div>
+		
+		<div class="content div2">
+			<span style="color: red; font-weight: bold;">애국가 2절</span>
+		</div>
+		
+	</div>
+
+</body>
+</html>

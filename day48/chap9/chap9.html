@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>9. 말풍선 표시하기</title>
+<!-- www.cgv.co.kr 에 가면 영화 예매 극장에 마우스를 오버하면
+           나오는 서버메뉴처럼  말풍선을 만들어본다.-->
+ 
+<style type="text/css">
+	.buttons{ width: 200px;
+			  float: left;
+			  text-align: center;
+			  color: #000000;
+			  background-color: red;
+			  margin: 5px;
+			  font-weight: bold;}
+	
+	.mymouse-over { color: red; /* 텍스트의 색깔을 빨강색으로 */
+					background: url("/JqueryStudy/eventHandling/chap9/image/balloon.jpg"); /* 배경이미지를 balloon.jpg 파일로 하겠다. */
+					background-repeat: no-repeat; /* 배경이미지로 사용되어지는 balloon.jpg 파일이 한번만 뜨게끔 */
+					background-position: bottom;/* 배경이미지로 사용되는 balloon.jpg 파일이 선택자  아래에 표시되도록 한다.*/}
+	
+	.showtip{margin: 25px;
+			 display: block;}				
+			  
+</style> 
+
+<script type="text/javascript" src="/JqueryStudy/js/jquery-2.0.0.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		
+		$(".buttons").hover(function(){
+			
+								 $(this).toggleClass("mymouse-over");
+								 var $txt = $(this).text();
+								 var $target = $(event.target);
+								 
+								 if($target.is(".movie")) {
+								 	$("<span class='showtip'>이것은 <a href='https://www.naver.com'>"+ $txt +"메뉴입니다</sapn>.").appendTo($(this));
+								 	
+								 }else if($target.is(".reservation"))
+									 $("<span class='showtip'>이것은 <a href='https://www.daum.net'>"+ $txt +"메뉴입니다</sapn>.").appendTo($(this));
+								 
+							 
+							},function(){
+								  $(this).toggleClass("mymouse-over");
+								  $(".showtip").remove();
+								
+							});
+		
+	});
+	
+</script>
+           
+</head>
+<body>
+	<span class="buttons movie">영화</span>
+	<span class="buttons reservation">예매</span>
+</body>
+</html>
