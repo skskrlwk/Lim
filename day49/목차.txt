@@ -1,0 +1,69 @@
+chap1
+	1-1.어느 버튼을 클릭했는지 확인하기(bind)
+	1-2. 어느 버튼을 더블클릭했는지 확인하기(bind)
+	1-3. html() VS text() 차이점, 함수를 이용한 input 태그의 value값 알아오기
+
+chap2
+	2. 버튼을 한번 클릭하여 이벤트발생한 이후 이벤트 비활성화 시키기(unbind)
+
+chap3	
+	3-1 . 마우스 이벤트 처리하기 (마우스를 눌렀을때  mousedown)
+	3-2. 마우스 이벤트 처리하기 (event.target 속성)
+
+chap4
+	4-1. 연예인 사진 보이기 감추기(click, setImg(imgFile))
+	4-2. 연예인 사진 보이기 감추기(mouseover, mouseout, setImg(imgFile) )
+	
+chap5
+	5-1. css() 메소드를 사용하여 동적으로 css 값 변경하기	
+	5-2. addClass(), removeClass() 메소드를 사용하여 동적으로 css 값 변경하기
+	5-3. hover 효과 적용하기(hover 란:? ==> mouseover + mouseout)
+
+chap6
+	6-1. 마우스를 움직여 이미지를 밝게 또는 흐리게 처리하기( css('opacity', '0.2') )
+	6-2. 연예인 사진 희미하게, 원래대로 보이기( css('opacity', '0.2') )
+	6-3. DIV 를 사용한 구역 나누기  / 연예인 사진 교체하기
+
+chap7
+	7-1. toggleClass() 에 대해서 알아본다.	
+	7-2. toggleClass() 를 사용하여 메뉴바 효과주기. 연예인 사진 희미하게, 원래대로 보이기( css('opacity', '0.2') )
+
+chap8
+	8-1. 이벤트 처리로 텍스트 추가[prepend(), append() 메소드] 또는 텍스트 제거[detach(), empty(), remove()메소드]	
+	8-2. appendTo() 메소드
+	
+chap9
+	 displayTest.html -- CSS의 display에 대해서 알아본다.
+	 menu.html -- display 를 li 에 적용하여 가로메뉴를 만들어본다.
+	 menu2.html -- display 를 li 에 적용하여 세로메뉴를 만들어본다.
+	 menu3.html -- display 를 li 에 적용하여 가로 메뉴를 만들어 말풍선을 추가한다.
+	 9. 말풍선 표시하기.	
+	 
+
+chap10
+	10. 더 읽기 링크 제공하기( fadeIn(), fadeOut() )
+
+chap11
+	11. 슬라이딩 효과로 텍스트 대체하기(slideUp(), slideDown(), 선택자의 chain 연결하기 )	 
+	
+chap12
+	12-1 이미지 스크롤하기[ animate(), slideUp() ]
+	12-2 이미지 스크롤하기[ animate(), fadeTo() ]
+	12-3 이미지 스크롤하기[ 스크롤 동안 이미지 확대하기 animate() ]
+	12-4 이미지 스크롤하기[ 오른쪽으로 스크롤되고, 다시 왼쪽으로 스크롤 되게 하기 ]	
+	12.5 이미지 스크롤하기[ 이벤트핸들러에 함수이름 부여하기, 반복적으로 오른쪽으로 스크롤되고 다시 왼쪽으로  스크롤 되게 하기 ]
+	
+
+chap13
+	13. keydown, keyup 이벤트 구분하기 
+
+chap14
+	14-1. 이벤트 버블링 막기(이벤트 버블링 문제발생 해결 하지 못한것)
+	14-2. 이벤트 버블링 막기(이벤트 버블링 문제발생 해결한것)
+			
+	
+	
+	
+	
+	
+	

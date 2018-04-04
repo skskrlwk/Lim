@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>12.4 이미지 스크롤하기[ 오른쪽으로 스크롤되고, 다시 왼쪽으로 스크롤 되게 하기 ]</title>
+
+
+<style type="text/css">
+
+	img {position: relative;}
+	
+</style>
+
+<script type="text/javascript" src="/JqueryStudy/js/jquery-2.0.0.js"></script>
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		
+		$("img").click(function(){
+			$(this).animate({left:600, top:500},
+							 'slow',
+							 function(){
+								$(this).fadeTo(1000, 0.0);
+								$(this).fadeTo(1000, 1.0);
+								$(this).animate({left:0, top:0},'slow');
+							 });
+			
+		});
+		
+		/*
+			선택자.animate(properties,
+						 speed,
+						 callback);
+			-- properties : 엘리먼트가 애니메이션이 끝나고 갖게 될 속성을 의미한다.
+			-- speed : 애니메이션이 완료되어지는 시간 단위는 밀리초이다.
+			-- callback : 애니메이션이 끝나고 나서 자동적으로 실행되어지는 함수이다.
+		*/
+		
+		function myTest(){
+			alert("이미지 투명도가 0.1이 되어진 다음에 실행하는 함수");
+		}
+		
+	});
+	
+</script>
+
+</head>
+<body>
+	<img src="images/fish.jpg" />
+</body>
+</html>

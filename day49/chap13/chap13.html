@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>keydown, keyup 이벤트 구분하기 (자주쓰임!)</title>
+
+<script type="text/javascript" src="/JqueryStudy/js/jquery-2.0.0.js"></script>
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		
+		$("#text1").bind("keydown", function(){
+			$("#text2").val($(this).val());
+		});
+		
+		$("#text3").bind("keyup", function(){
+			$("#text4").val($(this).val());
+		});
+			
+	});
+
+</script>
+
+</head>
+<body>
+	<form>
+		텍스트1(keydown) : <input type="text" id ="text1"/> <br/>
+		텍스트2(keydown) : <input type="text" id ="text2"/>
+		<p><p>
+		텍스트3(keyup) : <input type="text" id ="text3"/> <br/>
+		텍스트4(keyup) : <input type="text" id ="text4"/>
+	</form>
+
+</body>
+</html>
