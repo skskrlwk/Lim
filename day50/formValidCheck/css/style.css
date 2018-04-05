@@ -1,0 +1,87 @@
+@CHARSET "UTF-8";
+
+#container {
+	/* border: 1px solid red; */ 
+	position: relative;
+	top: 50px;
+	width: 750px;
+	min-height: 400px;
+	margin: 0px auto;
+}
+
+
+#title {
+	/* border: 1px solid blue; */
+	float: left;
+	width: 200px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+
+#content {
+	/* border: 1px solid green;  */
+	float: left;
+	width: 500px;
+	margin-left: 10px;
+	margin-top: 10px;
+	
+}
+
+
+#submit {
+	/* border: 1px solid purple;  */
+	clear: both;
+	width: 200px;
+	margin-top: 10px;
+	margin-left: 150px;
+	margin-right: auto;
+	margin-bottom: 10px;
+}
+
+
+
+ul {
+	list-style-type: none;  /* disc, square, circle */
+	line-height: 300%;
+	font-weight: bold;
+	color: navy;
+	padding-left: 2em;
+	margin-top: 1em;
+	margin-left: 0;
+	margin-right: 0;
+	margin-bottom: 2em;
+	
+}
+
+.star , .error , #error_passwd {color: red; font-size: 10pt; font-weight: bold;}
+
+.bgcol {background-color: LightGray;}
+
+#text {
+	line-height: 300%;
+	font-weight: bold;
+	color: navy;
+	padding-left: 0;
+	margin-top: 1em;
+	margin-left: 0;
+	margin-right: 0;
+	margin-bottom: 2em;
+}
+
+
+.long  {width: 150px; height: 20px;}
+.short {width:  50px; height: 20px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
