@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery UI 아코디온</title>
+<link rel="stylesheet" type="text/css" href="/JqueryStudy/Userinterface/jquery-ui-1.11.4.custom/jquery-ui.min.css">
+<!-- 순서는 jquery 일반 라이브러리 소스가 머저 나오고 그이후에 jquery ui 소스사용 -->
+<script type="text/javascript" src="/JqueryStudy/Userinterface/jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script> 
+<script type="text/javascript" src="/JqueryStudy/Userinterface/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+
+<style>
+	body{
+		font: 62.5% "Trebuchet MS", sans-serif;
+		margin: 50px;
+	}
+	.demoHeaders {
+		margin-top: 2em;
+	}
+	#dialog-link {
+		padding: .4em 1em .4em 20px;
+		text-decoration: none;
+		position: relative;
+	}
+	#dialog-link span.ui-icon {
+		margin: 0 5px 0 0;
+		position: absolute;
+		left: .2em;
+		top: 50%;
+		margin-top: -8px;
+	}
+	#icons {
+		margin: 0;
+		padding: 0;
+	}
+	#icons li {
+		margin: 2px;
+		position: relative;
+		padding: 4px 0;
+		cursor: pointer;
+		float: left;
+		list-style: none;
+	}
+	#icons span.ui-icon {
+		float: left;
+		margin: 0 4px;
+	}
+	.fakewindowcontain .ui-widget-overlay {
+		position: absolute;
+	}
+	select {
+		width: 200px;
+	}
+	/* ---------- 내가 만든 것 시작 ---------------*/
+	
+	.my_accordion{border:1px solid red;
+				  width: 50%;
+				 }
+	
+	/* ---------- 내가 만든 것 끝 ---------------*/
+</style>
+	
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		$("#accordion").accordion();
+	});
+	
+</script>
+
+</head>
+
+
+<body>
+
+<!-- Accordion -->
+<h2 class="demoHeaders">Accordion</h2>
+<div id="accordion" class="my_accordion">
+	<h3>First</h3>
+	<div>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</div>
+	<h3>Second</h3>
+	<div>Phasellus mattis tincidunt nibh.</div>
+	<h3>Third</h3>
+	<div>Nam dui erat, auctor a, dignissim quis.</div>
+</div>
+
+
+</body>
+</html>
