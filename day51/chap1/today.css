@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+#today {border: 1px solid red;
+		margin-top: 10px;
+		width: 40%;
+		height: 30px;
+		font-weight: bold;}

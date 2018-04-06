@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<!-- 
+	   회원가입시 필수입력 사항인 아이디, 암호, 성명, 주민등록번호, 이메일은 
+	   반드시 입력을 해야만 하고,
+	   또한 암호와 암호확인은 그 값이 일치해야만 하고,
+	   암호의 길이는 8글자 ~ 15글자 내에서
+	   영문자, 숫자, 특수기호가 혼합되어져야만 하고,
+	   핸드폰 번호는 숫자이어야 하며,
+	   이메일은 이메일 형식에 맞는 데이터이어야만 한다.
+	   마지막으로 주민번호는 주민번호 공식에 맞아야 한다.
+	   이렇게 되어지도록 jQuery 를 사용한 폼유효성 검사를 한다.   
+ -->
+
+<link rel="stylesheet" type="text/css" href="css/style.css" /> 
+
+<script type="text/javascript" src="/MyWeb/js/jquery-3.3.1.min.js"></script> 
+<script type="text/javascript" src="/MyWeb/chap3/util/util.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		
+		$(".error").hide();
+		$("#error_passwd").hide();
+		
+	//	$("#userid").focus();
+		
+	/*  $("#userid").focus(function(){
+			alert("Userid 텍스트박스에 포커스가 왔습니다.");
+			
+		});	// 선택자에 포커스가 들어왔을때 발생되어지는 이벤트 처리 
+		
+		$("#userid").blur(function(){
+			alert("Userid 텍스트박스에 포커스를 잃어버렸습니다.");
+			
+		});	// 선택자에 포커스가 나갔을때 발생되어지는 이벤트 처리
+	*/
+		$(".requiredInfo").each(function(){
+			
+			$(this).blur(function(){
+				var data = $(this).val().trim();
+				
+				if(data.length == 0) {
+					// 입력하지 않거나 공백만 넣었을 경우
+					$(this).parent().find(".error").show(); 
+					$(":input").attr("disabled",true).addClass("bgcol");
+					$("#btnRegister").attr("disabled",true); 
+					$(this).attr("disabled",false).removeClass("bgcol");
+					
+					
+				} else {
+					// 공백이 아닌 문자를 입력한 경우.
+					$(this).parent().find(".error").hide(); 
+					$(":input").attr("disabled",false).removeClass("bgcol");
+					$("#btnRegister").attr("disabled",false);
+					
+				}
+				
+			});
+			
+			
+		}); // 반복문 end of $(".requiredInfo").each---------------------
+		
+		$("#passwd").blur(function(){
+			
+			var passwd = $(this).val();
+			
+		//	var regexp_pw = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).*$/g;
+			
+			var regexp_passwd = new RegExp(/^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).*$/g); 
+			// 암호는 영문자,숫자,특수문자가 포함된 형태의 8~15글자 이하만 허락해주는 정규표현식 객체 생성.
+			
+			var bool = regexp_passwd.test(passwd);
+			// 암호 정규표현식 검사를 하는 것. 리턴값은 boolean타입이며 정규표현식에 만족하면 true, 아니면 false
+			
+			if(!bool) {
+				$("#error_passwd").show(); 
+				$(":input").attr("disabled",true).addClass("bgcol");
+				$("#btnRegister").attr("disabled",true); 
+				$(this).attr("disabled",false).removeClass("bgcol");
+				
+			}else {
+				$("#error_passwd").hide(); 
+				$(":input").attr("disabled",false).removeClass("bgcol");
+				$("#btnRegister").attr("disabled",false);
+				$("#passwdCheck").focus();
+			}
+			
+		});// end of ("#passwd").blur()-------------------------
+	
+		$("#passwdCheck").blur(function(){
+			
+			var passwd = $("#passwd").val();
+			var passwdCheck = $(this).val();
+			
+			if(passwd != passwdCheck) {
+				$(this).parent().find(".error").show();
+				$(":input").attr("disabled",true).addClass("bgcol");
+				$("#btnRegister").attr("disabled",true); 
+				$(this).attr("disabled",false).removeClass("bgcol");
+				
+			}else {
+				$(this).parent().find(".error").hide(); 
+				$(":input").attr("disabled",false).removeClass("bgcol");
+				$("#btnRegister").attr("disabled",false);
+				
+			}
+			
+		});// end of ("#passwdCheck").blur()-----------------------
+		
+		$("#jubun1").blur(function(){
+			
+			var jubun1 = $(this).val();
+			var regexp_jubun1 = /\d{6}/g; // 숫자 6자리만 들어와야하는 정규표현식
+			var bool = regexp_jubun1.test(jubun1);
+			
+			if(!bool) {
+				$(this).parent().find(".error").show();
+				$(":input").attr("disabled",true).addClass("bgcol");
+				$("#btnRegister").attr("disabled",true); 
+				$(this).attr("disabled",false).removeClass("bgcol");
+				
+			}else {
+				$(this).parent().find(".error").hide(); 
+				$(":input").attr("disabled",false).removeClass("bgcol");
+				$("#btnRegister").attr("disabled",false);
+				
+			}
+			
+		});//end of $("#jubun1").blur()--------------------
+		
+		$("#jubun2").blur(function(){
+			
+			var jubun2 = $(this).val();
+			var regexp_jubun2 = /[1-4][0-9][0-9][0-9][0-9][0-9][0-9]/g; // 숫자 7자리만 들어와야하는 정규표현식
+										  // 첫번째 숫자는 1,2,3,4 주 하나가 들어와야 하는 정규 표현식.
+			var bool = regexp_jubun2.test(jubun2);
+			
+			if(!bool) {
+				$(this).parent().find(".error").show();
+				$(":input").attr("disabled",true).addClass("bgcol");
+				$("#btnRegister").attr("disabled",true); 
+				$(this).attr("disabled",false).removeClass("bgcol");
+				
+			}else {
+				$(this).parent().find(".error").hide(); 
+				$(":input").attr("disabled",false).removeClass("bgcol");
+				$("#btnRegister").attr("disabled",false);
+				
+			}
+			
+			var jubun = $("#jubun1").val() + $(this).val();
+			
+			var n = funChkJumin(jubun);
+			
+			if(n==0) { // 주민번호 공식에 틀린경우
+				$(this).parent().find(".error").show();
+				$(":input").attr("disabled",true).addClass("bgcol");
+				$("#btnRegister").attr("disabled",true); 
+				$(this).attr("disabled",false).removeClass("bgcol");
+					
+			}
+			
+		});//end of $("#jubun2").blur()--------------------
+		
+		$("#mobile2").blur(function(){
+			
+			var mobile2 = $(this).val();
+			
+			if(mobile2.trim() != ""){
+				var regexp_mobile2 = /\d{3,4}/g; // 숫자 3자리 또는 4자리를 검사하는 정규 표현식.
+				
+				var bool = regexp_mobile2.test(mobile2);
+				
+				if(!bool){
+					$(this).parent().find(".error").show();
+					$(":input").attr("disabled",true).addClass("bgcol");
+					$("#btnRegister").attr("disabled",true); 
+					$(this).attr("disabled",false).removeClass("bgcol");
+					
+				}else {
+					$(this).parent().find(".error").hide(); 
+					$(":input").attr("disabled",false).removeClass("bgcol");
+					$("#btnRegister").attr("disabled",false);
+					
+				}
+				
+			} else {
+				$(this).parent().find(".error").show();
+				$(":input").attr("disabled",true).addClass("bgcol");
+				$("#btnRegister").attr("disabled",true); 
+				$(this).attr("disabled",false).removeClass("bgcol");
+			}
+			
+			
+			
+		});// end of $("#mobile2").blur()-----------------------
+		
+		$("#mobile3").blur(function(){
+			
+			var mobile3 = $(this).val();
+			
+			if(mobile3.trim() != ""){
+				var regexp_mobile3 = /\d{4}/g; // 숫자 4자리를 검사하는 정규 표현식.
+				
+				var bool = regexp_mobile3.test(mobile3);
+				
+				if(!bool){
+					$(this).parent().find(".error").show();
+					$(":input").attr("disabled",true).addClass("bgcol");
+					$("#btnRegister").attr("disabled",true); 
+					$(this).attr("disabled",false).removeClass("bgcol");
+					
+				}else {
+					$(this).parent().find(".error").hide(); 
+					$(":input").attr("disabled",false).removeClass("bgcol");
+					$("#btnRegister").attr("disabled",false);
+					
+				}
+				
+			} else {
+				$(this).parent().find(".error").show();
+				$(":input").attr("disabled",true).addClass("bgcol");
+				$("#btnRegister").attr("disabled",true); 
+				$(this).attr("disabled",false).removeClass("bgcol");
+			}
+			
+			
+		});// end of $("#mobile3").blur()-----------------------
+		
+		$("#email").blur(function(){
+			
+			var email = $(this).val();
+			var regexp_email = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+			
+			var bool = regexp_email.test(email);
+			
+			if(!bool) {
+				$(this).parent().find(".error").show();
+				$(":input").attr("disabled",true).addClass("bgcol");
+				$("#btnRegister").attr("disabled",true); 
+				$(this).attr("disabled",false).removeClass("bgcol");
+				
+			}else {
+				$(this).parent().find(".error").hide(); 
+				$(":input").attr("disabled",false).removeClass("bgcol");
+				$("#btnRegister").attr("disabled",false);
+			}
+			
+			
+		});
+		
+		
+		$("#btnRegister").click(function(event){
+			
+			var flagBool = false;
+			
+			$(".finish").each(function(){
+				var data = $(this).val().trim();
+				
+				if(data == "") {
+					flagBool = true;
+					return false; // for문에서의 break; 와 같은 역할을 한다.
+					
+				}
+				/*
+					jQuery 에서 for, while 문과 비슷한 역할을 하는
+					each() 메소드 사용시 break, continue와 같은 역할을 하는 것이 있다.
+					break에 해당하는것은 return false; 이고 
+					continue에 해당하는 것이 return true; 이다.
+				*/
+				
+				
+			});// end of $(".finish").each()-----------------------
+			
+			if(!flagBool){
+				
+				var frm = document.registerFrm; // 사용자가 입력한 회원가입 정보가 전송되도록 한다.
+				frm.method = "post";
+				frm.action = "register.jsp";
+				
+				frm.submit(); 
+				
+			}else { // 필수로 입력해야할 란에 공백이나 데이터가 없을 경우 
+				alert("데이터를 입력하세요");	
+				
+				event.preventDefault(); // event(지금은 클릭이벤트)를 작동하지 못하게 하는것.
+			}
+			
+			
+			
+		}); // end of $("#btnRegister").click()----------------------
+		
+		
+	});// end of $(document).ready()--------------------
+	
+	function test(){
+		
+		alert("회원가입 완료");
+	}
+	
+	
+</script>
+ 
+</head>
+<body>
+	<div id="container">
+		<div id="title">
+		   <ul>
+		   		<li>아이디<span class="star">*</span></li>
+		   		<li>암호<span class="star">*</span></li>
+		   		<li>암호확인<span class="star">*</span></li>
+		   		<li>성명<span class="star">*</span></li>
+		   		<li>주민번호<span class="star">*</span></li>
+		   		<li>핸드폰번호</li>
+		   		<li>이메일<span class="star">*</span></li>
+		   </ul>
+		</div>
+		
+		<div id="content">
+			<form name="registerFrm"> 
+			<div id="text">
+				<div>
+					<input type="text" id="userid" name="userid" class="long requiredInfo finish" required /> 
+					<span class="error">ID는 필수입력사항입니다.</span><br/>
+				</div>
+				
+				<div>
+					<input type="password" id="passwd" name="passwd" class="long finish" required />		
+					<span id="error_passwd">8~15 글자 영문자,숫자,특수기호를 혼합해야함.</span><br/>
+				</div>
+				
+				<div>
+					<input type="password" id="passwdCheck" name="passwdCheck" class="long finish" required /> 
+					<span class="error">암호가 일치하지 않습니다.</span><br/>
+				</div>
+				
+				<div>
+					<input type="text" id="name" name="name" class="long requiredInfo finish" required />	
+					<span class="error">성명은 필수입력사항입니다.</span><br/>
+				</div>
+				
+				<div>
+					<input type="text" id="jubun1" name="jubun1" class="short requiredInfo finish" maxlength="6" required />&nbsp;-&nbsp;<input type="password" id="jubun2" name="jubun2" class="short requiredInfo finish" maxlength="7" required /> 
+					<span class="error">올바른 주민등록번호가 아닙니다.</span><br/>
+				</div>
+				
+				<div>
+					<select id="mobile1" name="mobile1">
+						<option value="010" selected>010</option>
+						<option value="011">011</option>
+						<option value="016">016</option>
+						<option value="017">017</option>
+						<option value="018">018</option>
+						<option value="019">019</option>
+					</select>&nbsp;-&nbsp;<input type="text" id="mobile2" name="mobile2" class="short" maxlength="4" />&nbsp;-&nbsp;<input type="text" id="mobile3" name="mobile3" class="short" maxlength="4" />
+					<span class="error">휴대폰 형식이 아닙니다.</span><br/>
+				</div>
+				
+				<div>
+					<input type="email" id="email" name="email" class="long requiredInfo finish" placeholder="abc@def.com" required />
+					<span class="error">이메일 형식이 아닙니다.</span><br/>
+				</div>
+			</div>
+			</form>
+		</div>
+		
+		<div id="submit">
+			<button type="button" id="btnRegister" ><span style="font-size: 12pt; color: navy;">회원가입</span></button>
+		</div>
+		
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
