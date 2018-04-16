@@ -1,0 +1,3 @@
+﻿C:\Users\user1>cd C:\oraclexe\app\oracle\product\11.2.0\server\bin
+
+C:\oraclexe\app\oracle\product\11.2.0\server\bin>sqlldr userid=myorauser/eclass control=C:\myjsp\MyWeb\WebContent\sql\zipcode_Control.ctl log=C:\myjsp\MyWeb\WebContent\MyWebSQL\zipcode_Log.log
